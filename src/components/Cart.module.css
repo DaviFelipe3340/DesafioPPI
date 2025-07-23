@@ -78,3 +78,62 @@ h2 {
     font-weight: bold;
     margin: 0.5rem 0;
 }
+
+.cartLayout {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ;
+  background: var(--color-blue-dark);
+  border-radius: 15px;
+  padding: 3rem;
+  min-width: 300px;
+  color: var(--color-white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.freeShipping {
+  color: var(--green);
+  font-weight: bold;
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+.h3qtd {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.resume {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.pricetotal {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}

@@ -3,7 +3,7 @@ import styles from "./ProductList.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import Product from "./Product.jsx";
 
-export function ProductList({ product, addToCart }) {
+export function ProductList({  addToCart }) {
   const category = "laptops";
   const limit = 12;
   const apiURL = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description,stock`;
