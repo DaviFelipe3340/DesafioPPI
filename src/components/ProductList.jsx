@@ -3,7 +3,7 @@ import styles from "./ProductList.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import Product from "./Product.jsx";
 
-export function ProductList({  addToCart }) {
+export function ProductList({ addToCart }) {
   const category = "laptops";
   const limit = 12;
   const apiURL = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description,stock`;
@@ -11,6 +11,7 @@ export function ProductList({  addToCart }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState(""); // Novo estado para busca
 
   useEffect(() => {
     async function fetchProducts() {
@@ -31,10 +32,31 @@ export function ProductList({  addToCart }) {
     fetchProducts();
   }, []);
 
+  // Filtra produtos em tempo real
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className={styles.container}>
+      {/* Barra de pesquisa */}
+      <input
+        type="text"
+        placeholder="Buscar produto..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          margin: "2rem 0",
+          padding: "1rem",
+          fontSize: "1.6rem",
+          borderRadius: "0.5rem",
+          border: "1px solid #ccc",
+          width: "60%",
+          maxWidth: "400px",
+        }}
+      />
       <div className={styles.items}>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <Product key={product.id} product={product} addToCart={addToCart} />
         ))}
       </div>
@@ -53,6 +75,11 @@ export function ProductList({  addToCart }) {
         </div>
       )}
       {error && <p>Error loading products: {error.message}</p>}
+      {!loading && filteredProducts.length === 0 && (
+        <p style={{ fontSize: "2rem", marginTop: "2rem" }}>
+          Nenhum produto encontrado.
+        </p>
+      )}
     </div>
   );
 }
