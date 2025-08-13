@@ -3,6 +3,8 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
 import { Routes, Route } from "react-router";
+import Login from "./components/Login";
+import Cadastro from "./components/Cadastro";
 
 export default function App() {
   const [cart, setCart] = useState([]);
@@ -54,6 +56,8 @@ export default function App() {
             />
           }
         />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
       </Routes>
     </>
   );
